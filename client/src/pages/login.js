@@ -2,11 +2,13 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
+import Nav from "../components/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Login() {
   return (
     <div>
+      <Nav />
       <Jumbotron fluid>
         <Container>
           <h1>Welcome to the Stonks App! (name TBD) </h1>

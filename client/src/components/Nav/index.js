@@ -12,7 +12,7 @@ function nav() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/login">Sign Out</Nav.Link>
+          <Nav.Link href="/">Sign Out</Nav.Link>
           <Nav.Link href="/input">Add to Portfolio</Nav.Link>
         </Nav>
       </Navbar.Collapse>
