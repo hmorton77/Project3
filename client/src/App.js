@@ -6,10 +6,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Login from "./pages/login";
-import InputForm from "./pages/inputForm";
-import Oops from "./pages/oops";
-import Main from "./pages/main";
+import Login from "./pages/login/login";
+import InputForm from "./pages/input/inputForm";
+import Oops from "./pages/oops/oops";
+import Main from "./pages/main/main";
 
 function App() {
   return (

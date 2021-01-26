@@ -1,30 +1,32 @@
-import Nav from "../components/Nav";
+import Nav from "../../components/Nav";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
+// import InputGroup from "react-bootstrap/InputGroup";
+// import FormControl from "react-bootstrap/FormControl";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./input.css";
 
 function InputPage() {
   return (
     <div>
       <Nav />
       <h1>this is the input page!</h1>
-      <Form>
+      <Form className="stockInput">
         <Form.Group controlId="formStockname">
-          <Form.Label>Stock name</Form.Label>
+          <Form.Label>Stock ticker name</Form.Label>
           <Form.Control type="name" placeholder="AAPL" />
         </Form.Group>
-
-        <Form.Group controlId="formDate">
+        {/* functionality TBA */}
+        {/* <Form.Group controlId="formDate">
           <Form.Label>Date Purchased</Form.Label>
           <Form.Control type="date" placeholder="MM/DD/YYYY" />
-        </Form.Group>
+        </Form.Group> */}
         <Form.Group controlId="formNumber">
           <Form.Label>Quantity of Shares Purchased</Form.Label>
           <Form.Control type="number" placeholder="1000" />
         </Form.Group>
-        <InputGroup className="mb-3">
+        {/* functionality TBA */}
+        {/* <InputGroup className="mb-3">
           <InputGroup.Prepend>
             <InputGroup.Text>$</InputGroup.Text>
           </InputGroup.Prepend>
@@ -32,7 +34,7 @@ function InputPage() {
           <InputGroup.Append>
             <InputGroup.Text>/share</InputGroup.Text>
           </InputGroup.Append>
-        </InputGroup>
+        </InputGroup> */}
 
         <Button variant="primary" type="submit">
           Submit
