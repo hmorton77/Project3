@@ -6,6 +6,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./main.css";
 
+// importing the components for the API calls
+// import Ticker from "../../components/ticker";
+// import CryptoNews from "../../components/cryptoNews";
+// import StockNews from "../../components/stockNews";
+// import HotCold from "../../components/hotCold";
+
 function Main() {
   return (
     <container fluid>
@@ -17,6 +23,7 @@ function Main() {
       <Row>
         <Col>
           <h2>This Div will contain the stock ticker analysis</h2>
+          {/* <Ticker /> */}
         </Col>
         <Col>
           <h2>This Div will contain a line chart of the stocks</h2>
@@ -27,6 +34,7 @@ function Main() {
       </Row>
       <Row>
         <h2>This Div will contain some hot or cold stocks to scoop up with your profits!</h2>
+        {/* <HotCold /> */}
       </Row>
     </container>
   );
