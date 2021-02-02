@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
 router.get('/register', (req, res) => {
     res.render('register');
 })
+//dasboard
 router.get('/dashboard', (req, res) => {
     res.render('dashboard');
 })
