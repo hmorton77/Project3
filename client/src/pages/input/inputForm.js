@@ -6,21 +6,24 @@ import { Input, FormSubmitBtn } from "../../components/form";
 // import FormControl from "react-bootstrap/FormControl";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./input.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import API from "../../utils/API";
 
 function InputPage() {
   //hooks:
   const [stocks, setStocks] = useState([]);
-  const [formObject, setFormObject] = useState({
-    stockName: "",
-    stockAmount: "",
-  });
+  const [formObject, setFormObject] = useState({});
 
   // when someone inputs something into the form, the text that has been input will be turned into an object with the key in the formObject state.
   function handleInputChange(event) {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
+  }
+  // this will generate the stocks from the database when we call for it.
+  function loadStocks() {
+    API.getStocks()
+      .then((res) => setStocks(res.data))
+      .catch((err) => console.log(err));
   }
 
   // when the submit button is clicked, instead of reloading the page, we'll save it to the database, and then reload the page.
@@ -52,7 +55,7 @@ function InputPage() {
 
         <Input onChange={handleInputChange} name="stock amount (shares)" placeholder="1000" type="number" value={formObject.stockAmount} />
 
-        <FormSubmitBtn disabled={!(formObject.stockName && formObject.stockAmount)} variant="primary" onClick={handleFormSubmit.then}>
+        <FormSubmitBtn variant="primary" disabled={!(formObject.stockName && formObject.stockAmount)} onClick={handleFormSubmit.then}>
           Add to portfolio
         </FormSubmitBtn>
       </Form>

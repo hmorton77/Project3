@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const stockSchema = new Schema({
-  tickerName: {
+  stockName: {
     type: String,
     required: true,
   },
@@ -11,7 +11,7 @@ const stockSchema = new Schema({
   //     type: Date,
   //     required: true,
   //   },
-  amountPurchased: {
+  stockAmount: {
     type: Number,
     required: true,
   },
