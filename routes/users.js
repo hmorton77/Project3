@@ -5,21 +5,17 @@ const User = require("../models/user");
 const bcrypt = require('bcrypt');
 
 //login handle
-router.get('/login', (req, res) => {
-    res.render('login');
-})
 router.get('/register', (req, res) => {
     res.render('register')
 })
 
 //register handle
-router.post('/login', (req, res, next) => {
+router.post('/login',
     passport.authenticate('local', {
-        successRedirect: '/dashboard',
+        successRedirect: '/main',
         failureRedirect: '/users/login',
         failureFlash: true,
-    })(req, res, next);
-})
+    }))
 
 //register post handle
 router.post('/register', (req, res) => {
