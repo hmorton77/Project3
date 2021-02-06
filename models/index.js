@@ -1,3 +1,3 @@
 module.exports = {
-  Stock: require("./stock"),
+  Stonx: require("./stock"),
 };

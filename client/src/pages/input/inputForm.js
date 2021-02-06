@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./input.css";
 import React, { useState } from "react";
 import API from "../../utils/API";
+import Main from "../main/main";
 
 function InputPage() {
   //hooks:
@@ -33,6 +34,7 @@ function InputPage() {
       API.saveStock({
         stockName: formObject.stockName,
         stockAmount: formObject.stockAmount,
+        email: "test@test.com",
       })
         .then(() =>
           setFormObject({
@@ -55,9 +57,7 @@ function InputPage() {
 
         <Input onChange={handleInputChange} name="stock amount (shares)" placeholder="1000" type="number" value={formObject.stockAmount} />
 
-        <FormSubmitBtn variant="primary" disabled={!(formObject.stockName && formObject.stockAmount)} onClick={handleFormSubmit.then}>
-          Add to portfolio
-        </FormSubmitBtn>
+        <FormSubmitBtn onClick={handleFormSubmit}>Add to portfolio</FormSubmitBtn>
       </Form>
     </div>
   );

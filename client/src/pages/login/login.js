@@ -3,7 +3,6 @@ import Form from "react-bootstrap/Form";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import Nav from "../../components/Nav";
-import { Input, FormSubmitBtn } from "../../components/form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 
