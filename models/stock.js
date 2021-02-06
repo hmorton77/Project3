@@ -6,20 +6,14 @@ const stockSchema = new Schema({
     type: String,
     required: true,
   },
-  // Feature TBA
-  //   datePurchased: {
-  //     type: Date,
-  //     required: true,
-  //   },
   stockAmount: {
     type: Number,
     required: true,
   },
-  // Feature TBA
-  //   dollarSpent: {
-  //     type: Number,
-  //     required: true,
-  //   },
+  email: {
+    type: String,
+    required: true,
+  },
 });
 
 const Stock = mongoose.model("Stock", stockSchema);

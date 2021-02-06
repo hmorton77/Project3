@@ -9,19 +9,21 @@ const stockSeed = [
   {
     stockName: "AAPL",
     stockAmount: "1000",
+    email: "test@test.com",
   },
   {
     stockName: "BTC",
     stockAmount: "2.5",
+    email: "test@test.com",
   },
   {
     stockName: "GME",
     stockAmount: "35",
+    email: "test@test.com",
   },
 ];
 
-db.Stonx.admin
-  .remove({})
+db.Stonx.remove({})
   .then(() => db.Stonx.collection.insertMany(stockSeed))
   .then((data) => {
     console.log(data.result.n + " records inserted!");
