@@ -12,3 +12,9 @@ export default {
     return axios.get("./api/stocks/" + id);
   },
 };
+
+export const iex = {
+  api_token: 'pk_da5a708b71434a6ab57aabddd797c5db',
+  base_url: 'https://cloud.iexapis.com/stable'
+};
+

@@ -2,6 +2,7 @@ import React from "react";
 import Nav from "../../components/Nav";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Stock from '../../components/Stocks/index'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./main.css";
@@ -23,7 +24,7 @@ function Main() {
       <Row>
         <Col>
           <h2>This Div will contain the stock ticker analysis</h2>
-          {/* <Ticker /> */}
+          <Stock />
         </Col>
         <Col>
           <h2>This Div will contain a line chart of the stocks</h2>
