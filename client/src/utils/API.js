@@ -13,16 +13,8 @@ export default {
   },
 };
 
-const axiosInstance = axios.create({
-  baseURL: 'https://www.alphavantage.co/query'
-});
+export const iex = {
+  api_token: 'pk_da5a708b71434a6ab57aabddd797c5db',
+  base_url: 'https://cloud.iexapis.com/stable'
+};
 
-export const getDailyStocks = (symbol) => {
-  return axiosInstance.get('', {
-    params: {
-      function: 'TIME_SERIES_DAILY',
-      symbol,
-      apikey: 'U10WITHB3BD72Y99%27'
-    }
-  })
-}
