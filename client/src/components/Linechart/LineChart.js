@@ -1,46 +1,40 @@
-import React, { useEffect } from "react";
-import * as d3 from "d3";
+import Chart from "react-google-charts";
 
-function LineChart(props) {
-  const { data, width, height } = props;
-
-  useEffect(() => {
-    drawChart();
-  }, [data]);
-
-  function drawChart() {
-    //determining the size of the chart
-    const margin = { top: 5, right: 5, bottom: 5, left: 5 };
-
-    const yMinValue = d3.min(data, (d) => d.value);
-    const yMaxValue = d3.max(data, (d) => d.value);
-
-    const xMinValue = d3.min(data, (d) => d.value);
-    const xMaxValue = d3.max(data, (d) => d.value);
-
-    const svg = d3
-      .select("#container")
-      .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height" + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", "translate{$margin.left}.,${margin.top}");
-
-    const tooltip = d3.select("#container").append("div").attr("class", "tooltip");
-
-    // where our x values and y values will lie.
-    const xScale = d3.scaleLinear().domain([xMinValue, xMaxValue]).range[(0, width)];
-    const yScale = d3.scaleLinear().range([height, 0]).domain[(0, yMaxValue)];
-
-    const line = d3
-      .line()
-      .x((d) => xScale(d.label))
-      .y((d) => yScale(d.value))
-      .curve(d3.curveMonotoneX);
-    svg.append("g").attr("class", "grid").attr("transform", "translate(0, ${height})").call(d3.axisBottom(xScale).tickSize(-height).tickFormat(""));
-    svg.append("g").attr("class", "grid").call(d3.axisLeft(yScale).tickSize(-width).tickFormat(""));
-  }
-  return <div id="container" />;
+function LineChart() {
+  return (
+    <div>
+      <p>Chart:</p>
+      <Chart
+        width={"50rem"}
+        height={"15rem"}
+        chartType="LineChart"
+        loader={<div>Loading Chart</div>}
+        data={[
+          [
+            { type: "number", label: "x" },
+            { type: "number", label: "values" },
+            { id: "i0", type: "number", role: "interval" },
+            { id: "i1", type: "number", role: "interval" },
+            { id: "i2", type: "number", role: "interval" },
+            { id: "i2", type: "number", role: "interval" },
+            { id: "i2", type: "number", role: "interval" },
+            { id: "i2", type: "number", role: "interval" },
+          ],
+          [1, 100, 90, 110, 85, 96, 104, 120],
+          [2, 120, 95, 130, 90, 113, 124, 140],
+          [3, 130, 105, 140, 100, 117, 133, 139],
+          [4, 90, 85, 95, 85, 88, 92, 95],
+          [5, 70, 74, 63, 67, 69, 70, 72],
+          [6, 30, 39, 22, 21, 28, 34, 40],
+          [7, 80, 77, 83, 70, 77, 85, 90],
+          [8, 100, 90, 110, 85, 95, 102, 110],
+        ]}
+        options={{
+          intervals: { style: "sticks" },
+          legend: "none",
+        }}
+      />
+    </div>
+  );
 }
-
 export default LineChart;
