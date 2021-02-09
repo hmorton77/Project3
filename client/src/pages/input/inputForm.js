@@ -6,7 +6,7 @@ import { Input, FormSubmitBtn } from "../../components/form";
 // import FormControl from "react-bootstrap/FormControl";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./input.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 import Main from "../main/main";
 
@@ -14,6 +14,16 @@ function InputPage() {
   //hooks:
   const [stocks, setStocks] = useState([]);
   const [formObject, setFormObject] = useState({});
+
+  useEffect(() => {
+    loadStocks();
+  }, []);
+
+  function loadStocks() {
+    API.getStocks()
+      .then((res) => setStocks(res.data))
+      .catch((err) => console.log(err));
+  }
 
   // when someone inputs something into the form, the text that has been input will be turned into an object with the key in the formObject state.
   function handleInputChange(event) {
@@ -30,23 +40,24 @@ function InputPage() {
   // when the submit button is clicked, instead of reloading the page, we'll save it to the database, and then reload the page.
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (formObject.stockName && formObject.stockAmount) {
-      API.saveStock({
-        stockName: formObject.stockName,
-        stockAmount: formObject.stockAmount,
-        email: "test@test.com",
-      })
-        .then(() =>
-          setFormObject({
-            stockName: "",
-            stockAmount: "",
-          })
-        )
-        .then(() => console.log("stocks logged!"))
-        .catch((err) => console.log(err));
-    }
+    API.saveStock({
+      stockName: formObject.stockName,
+      stockAmount: formObject.stockAmount,
+      // email: "test@test.com",
+    })
+      .then(() =>
+        setFormObject({
+          stockName: "",
+          stockAmount: "",
+        })
+      )
+      .then(() => console.log("stocks logged!"))
+      .catch((err) => console.log(err));
   }
-
+  function test(event) {
+    event.preventDefault();
+    console.log("hello!");
+  }
   // what you will see on the webpage
   return (
     <div>
