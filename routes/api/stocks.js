@@ -9,7 +9,6 @@ router.route("/")
 // Matches with "/api/stocks/:id"
 router.route("/:id")
     .get(stocksController.findById)
-    .put(stocksController.update)
-    .delete(stocksController.remove);
+    .put(stocksController.update).delete(stocksController.remove);
 
 module.exports = router;

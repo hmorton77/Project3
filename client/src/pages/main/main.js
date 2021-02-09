@@ -11,7 +11,7 @@ import "./main.css";
 
 function Main() {
   return (
-    <Container>
+    <Container fluid>
       <Nav />
       <h1>Welcome!</h1>
       <Row>

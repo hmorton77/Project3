@@ -19,12 +19,6 @@ function InputPage() {
     loadStocks();
   }, []);
 
-  function loadStocks() {
-    API.getStocks()
-      .then((res) => setStocks(res.data))
-      .catch((err) => console.log(err));
-  }
-
   // when someone inputs something into the form, the text that has been input will be turned into an object with the key in the formObject state.
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -43,7 +37,7 @@ function InputPage() {
     API.saveStock({
       stockName: formObject.stockName,
       stockAmount: formObject.stockAmount,
-      // email: "test@test.com",
+      email: "test@test.com",
     })
       .then(() =>
         setFormObject({
