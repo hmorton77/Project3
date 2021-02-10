@@ -34,6 +34,7 @@ function InputPage() {
   // when the submit button is clicked, instead of reloading the page, we'll save it to the database, and then reload the page.
   function handleFormSubmit(event) {
     event.preventDefault();
+    console.log("event prevented!");
     API.saveStock({
       stockName: formObject.stockName,
       stockAmount: formObject.stockAmount,

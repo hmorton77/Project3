@@ -7,7 +7,7 @@ const stockSchema = new Schema({
     required: true,
   },
   stockAmount: {
-    type: Number,
+    type: String,
     required: true,
   },
   email: {
