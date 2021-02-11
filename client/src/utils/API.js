@@ -11,11 +11,14 @@ export default {
   saveStock: function (stockData) {
     return axios.post("/api/stocks/", stockData);
   },
+  getTickers: function () {
+    return axios.get("/api/stocks/tickers")
+  },
   getStocks: function () {
     return axios.get("/api/stocks/");
   },
   getStock: function (id) {
-    return axios.get("/api/stocks/" + id);
+    return axios.get("/api/stocks/getid/" + id);
   },
 };
 
@@ -23,3 +26,4 @@ export const iex = {
   api_token: "pk_da5a708b71434a6ab57aabddd797c5db",
   base_url: "https://cloud.iexapis.com/stable",
 };
+

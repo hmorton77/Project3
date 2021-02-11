@@ -5,9 +5,10 @@ const stocksController = require("../../controllers/stocksController");
 router.route("/")
     .get(stocksController.findAll)
     .post(stocksController.create);
-
+router.route("/tickers")
+    .get(stocksController.findAll)
 // Matches with "/api/stocks/:id"
-router.route("/:id")
+router.route("/getid/:id")
     .get(stocksController.findById)
     .put(stocksController.update)
     .delete(stocksController.remove);
