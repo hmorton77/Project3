@@ -2,11 +2,14 @@ import axios from "axios";
 
 export default {
     logIn: function (user) {
-        return axios.post("/login", user)
+      return axios.post("/users/login", user)
+    },
+    register: function (user) {
+      return axios.post("/users/register", user)
     },
   //saving the purchased stock into one's database
   saveStock: function (stockData) {
-    return axios.post("api/stocks/", stockData);
+    return axios.post("/api/stocks/", stockData);
   },
   getStocks: function () {
     return axios.get("/api/stocks/");

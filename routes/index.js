@@ -19,15 +19,15 @@ router.get('/dashboard',ensureAuthenticated, (req, res) => {
         user: req.user
     });
 
-    module.exports = router;
+    //module.exports = router;
 }); 
 
 // API Routes
 // router.use("/api", apiRoutes);
 
 // If no API routes are hit, send the React app
-router.use(function (req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+// router.use(function (req, res) {
+//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
 
 module.exports = router;

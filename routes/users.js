@@ -1,22 +1,41 @@
 const passport = require('passport');
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 const User = require("../models/user");
 const bcrypt = require('bcrypt');
 
 //login handle
-router.get('/register', (req, res) => {
-    res.render('register')
-})
+// router.get('/register', (req, res) => {
+//     res.render('register')
+// })
 
 //register handle
-router.post('/login',
-    passport.authenticate('local', {
-        successRedirect: '/main',
-        failureRedirect: '/users/login',
-        failureFlash: true,
-    }))
 
+router.post('/login', function (req, res, next) {
+    //console.log(req.body)
+    passport.authenticate('local', function (err, user, info) {
+        //console.log("authed")
+        if (err) { return next(err); }
+        if (!user) { return res.json("user not found"); }
+        req.logIn(user, function (err) {
+            if (err) { return next(err); }
+            return res.json(user);
+        });
+    })(req, res, next);
+});
+router.post('/register', (req, res) => {
+    console.log(req.body)
+    var newUser = req.body
+    bcrypt.genSalt(10, (err, salt) =>
+        bcrypt.hash(req.body.password, salt,
+            (err, hash) => {
+                if (err) throw err;
+                //save pass to hash
+                newUser.password = hash;
+                //save user
+                User.create(newUser).then(dbModel => res.json(dbModel))
+            }));
+    
+})
 //register post handle
 router.post('/register', (req, res) => {
     const { name, email, password, password2 } = req.body;
