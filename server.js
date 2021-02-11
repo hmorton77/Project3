@@ -73,7 +73,13 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Stonx", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Stonx"),
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  };
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

@@ -34,6 +34,7 @@ function InputPage() {
   // when the submit button is clicked, instead of reloading the page, we'll save it to the database, and then reload the page.
   function handleFormSubmit(event) {
     event.preventDefault();
+    console.log("event prevented!");
     API.saveStock({
       stockName: formObject.stockName,
       stockAmount: formObject.stockAmount,
@@ -58,9 +59,9 @@ function InputPage() {
       <Nav />
       <h1>this is the input page!</h1>
       <Form className="stockInput">
-        <Input onChange={handleInputChange} name="stock name" placeholder="AAPL" value={formObject.stockName} />
+        <Input onChange={handleInputChange} name="stockName" placeholder="AAPL" />
 
-        <Input onChange={handleInputChange} name="stock amount (shares)" placeholder="1000" type="number" value={formObject.stockAmount} />
+        <Input onChange={handleInputChange} name="stockAmount" placeholder="1000" type="number" />
 
         <FormSubmitBtn onClick={handleFormSubmit}>Add to portfolio</FormSubmitBtn>
       </Form>
