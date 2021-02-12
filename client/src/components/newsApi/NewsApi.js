@@ -28,7 +28,11 @@ class NewsApi extends Component {
     for (const row of this.state.articles) {
       rows.push(
         <tr key={this.state.articles.indexOf(row)}>
-          <td>{row.title}</td>
+          <td>
+            <a href={row.news_url} target="_blank">
+              {row.title}
+            </a>
+          </td>
         </tr>
       );
     }

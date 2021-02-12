@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { iex } from "../../utils/API.js";
+import { iexKey } from "../../APIkeys";
 
 class StockRow extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class StockRow extends Component {
 
   componentDidMount() {
     //query the API
-    const url = `${iex.base_url}/stock/${this.props.ticker}/intraday-prices?chartLast=1&token=${iex.api_token}`;
+    const url = `${iex.base_url}/stock/${this.props.ticker}/intraday-prices?chartLast=1&token=${iexKey}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
