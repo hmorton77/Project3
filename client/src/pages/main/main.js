@@ -7,6 +7,9 @@ import LineChart from "../../components/Linechart/LineChart";
 import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import NewsApi from "../../components/newsApi/NewsApi";
+import { stockNewsKey, cryptoNewsKey } from "../../APIkeys";
+
 import "./main.css";
 
 function Main() {
@@ -22,12 +25,11 @@ function Main() {
           <LineChart />
         </Col>
         <Col>
-          <h2>This Div will contain news headlines that relate to your portfolio!</h2>
+          <NewsApi domain="stocknewsapi.com" token={stockNewsKey} />
         </Col>
-      </Row>
-      <Row>
-        <h2>This Div will contain some hot or cold stocks to scoop up with your profits!</h2>
-        {/* <HotCold /> */}
+        <Col>
+          <NewsApi domain="cryptonews-api.com" token={cryptoNewsKey} />
+        </Col>
       </Row>
     </Container>
   );
