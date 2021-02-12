@@ -8,7 +8,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./input.css";
 import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
-import Main from "../main/main";
 
 function InputPage() {
   //hooks:
