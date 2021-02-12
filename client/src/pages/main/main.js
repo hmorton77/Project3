@@ -25,9 +25,11 @@ function Main() {
           <LineChart />
         </Col>
         <Col>
+          <h2>Stock News</h2>
           <NewsApi domain="stocknewsapi.com" token={stockNewsKey} />
         </Col>
         <Col>
+          <h2>Crypto News</h2>
           <NewsApi domain="cryptonews-api.com" token={cryptoNewsKey} />
         </Col>
       </Row>
