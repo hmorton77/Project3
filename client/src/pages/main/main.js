@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../../components/Nav";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -9,10 +9,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import NewsApi from "../../components/newsApi/NewsApi";
 import { stockNewsKey, cryptoNewsKey } from "../../APIkeys";
+import API from "../../utils/API";
 
 import "./main.css";
 
 function Main() {
+  const [tickers, setTickers] = useState([]);
+
+  useEffect(() => {
+    API.getTickers()
+      .then((res) => {
+        setTickers(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [tickers]);
+
   return (
     <Container fluid>
       <Nav />
@@ -22,7 +33,7 @@ function Main() {
           <Stock />
         </Col>
         <Col>
-          <LineChart />
+          <LineChart tickers={tickers} />
         </Col>
         <Col>
           <h2>Stock News</h2>

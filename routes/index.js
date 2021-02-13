@@ -1,26 +1,29 @@
 const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");
-const {ensureAuthenticated } = require("../config/auth.js")
+const { ensureAuthenticated } = require("../config/auth.js");
+
+//api routes
+router.use("/api", apiRoutes);
 
 //login
-router.get('/', (req, res) => {
-    res.render('welcome');
-})
+router.get("/", (req, res) => {
+  res.render("welcome");
+});
 
 //register
-router.get('/register', (req, res) => {
-    res.render('register');
-})
+router.get("/register", (req, res) => {
+  res.render("register");
+});
 
 //dashboard
-router.get('/dashboard',ensureAuthenticated, (req, res) => {
-    res.render('dashboard', {
-        user: req.user
-    });
+router.get("/dashboard", ensureAuthenticated, (req, res) => {
+  res.render("dashboard", {
+    user: req.user,
+  });
 
-    //module.exports = router;
-}); 
+  //module.exports = router;
+});
 
 // API Routes
 // router.use("/api", apiRoutes);
