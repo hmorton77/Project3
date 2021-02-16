@@ -1,6 +1,6 @@
 import Chart from "react-google-charts";
 import react, { useEffect, useState } from "react";
-import { iexKey } from "../../APIkeys";
+import { iexKey } from "../../keys";
 
 // function LineChart(props) {
 //   const [stockPrices, setStockPrices] = useState([]);

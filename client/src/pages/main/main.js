@@ -8,7 +8,7 @@ import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import NewsApi from "../../components/newsApi/NewsApi";
-import { stockNewsKey, cryptoNewsKey } from "../../APIkeys";
+import { stockNewsKey, cryptoNewsKey } from "../../keys";
 import API from "../../utils/API";
 
 import "./main.css";
