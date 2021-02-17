@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 // const router = express.Router();
 const app = express();
+const bcrypt = require("bcrypt");
 const expressEjsLayout = require("express-ejs-layouts");
 const flash = require("connect-flash");
 const session = require("express-session");
@@ -17,6 +18,10 @@ app.use(expressEjsLayout);
 //BodyParser
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -38,20 +43,28 @@ passport.use(
       usernameField: "email",
     },
     function (email, password, done) {
-      //console.log(email, password)
+      console.log(email, password);
       console.log("arrived in strat");
-      User.findOne({ email: email }, function (err, user) {
-        if (err) {
-          return done(err);
-        }
-        if (!user) {
-          return done(null, false, { message: "Incorrect username." });
-        }
-        if (user.password !== password) {
-          return done(null, false, { message: "Incorrect password." });
-        }
-        return done(null, user);
-      });
+      User.findOne({ email: email })
+        .then(function (user) {
+          console.log(user);
+          if (!user) {
+            console.log("incorrect username");
+            return done(null, false, { message: "Incorrect username." });
+          }
+          bcrypt.compare(password, user.password).then(function (isMatch) {
+            console.log(password, user.password);
+            console.log(isMatch);
+            if (isMatch) {
+              console.log("password match");
+              return done(null, user);
+            } else {
+              console.log("no pass match");
+              return done(null, false, { message: "pass incorrect" });
+            }
+          });
+        })
+        .catch((err) => console.log(err));
     }
   )
 );

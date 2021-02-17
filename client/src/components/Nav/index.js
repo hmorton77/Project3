@@ -15,7 +15,7 @@ function nav() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="/">Sign Out</Nav.Link>
-          <Nav.Link href="/main"> Main(this will be removed later, just here as an easy shortcut)</Nav.Link>
+          <Nav.Link href="/main"> Main</Nav.Link>
           <Nav.Link href="/input">Add to Portfolio</Nav.Link>
         </Nav>
       </Navbar.Collapse>

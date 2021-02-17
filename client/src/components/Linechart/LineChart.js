@@ -1,8 +1,10 @@
 import Chart from "react-google-charts";
 import react, { useEffect, useState } from "react";
 import { iexKey } from "../../APIkeys";
+import { name } from "ejs";
 
 // function LineChart(props) {
+//OG code
 //   const [stockPrices, setStockPrices] = useState([]);
 //   const [counter, setCounter] = useState(0);
 
@@ -62,13 +64,14 @@ import { iexKey } from "../../APIkeys";
 // }
 function LineChart() {
   return (
+    // Hard coded charts
     <Chart
       width={"600px"}
       height={"400px"}
       chartType="LineChart"
       loader={<div>Loading Chart</div>}
       data={[
-        ["x", "dogs", "cats"],
+        ["x", "AAPL", "GME"],
         [0, 0, 0],
         [1, 10, 5],
         [2, 23, 15],
@@ -83,7 +86,7 @@ function LineChart() {
           title: "Time",
         },
         vAxis: {
-          title: "Popularity",
+          title: "Value($)",
         },
         series: {
           1: { curveType: "function" },
@@ -93,4 +96,19 @@ function LineChart() {
     />
   );
 }
+// function LineChart() {
+//   useEffect(() => {
+//     const func = async () => {
+//       const url = "https://random-data-api.com/api/name/random_name";
+//       let temp = [];
+//       for (let i = 0; i < API_COUNT; i++) {
+//         let name = await (await fetch(url)).json();
+//         temp.push(name.name);
+//       }
+
+//       setNames(temp);
+//     };
+//     func(console.log(name.name));
+//   }, []);
+// }
 export default LineChart;

@@ -27,7 +27,7 @@ function Main() {
   return (
     <Container fluid>
       <Nav />
-      <h1>Welcome!</h1>
+      <h1>Welcome User!</h1>
       <Row>
         <Col>
           <Stock />
@@ -37,11 +37,11 @@ function Main() {
         </Col>
         <Col>
           <h2>Stock News</h2>
-          <NewsApi domain="stocknewsapi.com" token={stockNewsKey} />
+          {/* <NewsApi domain="stocknewsapi.com" token={stockNewsKey} /> */}
         </Col>
         <Col>
           <h2>Crypto News</h2>
-          <NewsApi domain="cryptonews-api.com" token={cryptoNewsKey} />
+          {/* <NewsApi domain="cryptonews-api.com" token={cryptoNewsKey} /> */}
         </Col>
       </Row>
     </Container>

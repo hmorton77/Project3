@@ -6,12 +6,15 @@ import Container from "react-bootstrap/Container";
 import Nav from "../../components/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import API from "../../utils/API";
+import { useHistory } from "react-router-dom";
 import "./login.css";
 import Register from "../register/index";
 
 function Login() {
+  let history = useHistory();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
   function handleSubmit(e) {
     e.preventDefault();
     console.log("submitted");
@@ -22,6 +25,9 @@ function Login() {
     console.log(user);
     API.logIn(user).then((results) => {
       console.log(results);
+      if (results.data !== "user not found") {
+        history.push("/main");
+      }
     });
   }
 
